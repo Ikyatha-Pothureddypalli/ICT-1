@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adi Electronics - Online Shopping</title>
+<style>
+  body {
+    background-color: #fffacd;
+  }
+  #heading {
+    color: #FFFFFF;
+    font-family: Courier New;
+    background-color: #ffa07a;
+    text-align: center;
+  }
+  #Ebill {
+    font-family: Arial;
+    width: 300px;
+    background-color: #5f9ea0;
+    color: white;
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+  }
+  #Ebill th, #Ebill td {
+    border: 2px solid #ddd;
+    padding: 8px;
+  }
+  #result {
+    color: #770080;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
+</style>
+<script>
+  function calculateBagTotal(){
+  }
+
+  function calculateCoupon() {
+  }
+
+  function calculateFinalAmount() {
+    var resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "Dear <<CustomerName>>, Your Final bill is Rs: <<Amount payable>>/-, Product will be delivered in next <<24/72>> hrs. Invoice Copy is mailed on: <<Email id>>";
+    return false;
+  }
+
+  function disableSubmit() {
+    document.getElementById("submit").disabled = true;
+  }
+
+  function activateButton(checkbox) {
+    if (checkbox.checked) {
+      document.getElementById("submit").disabled = false;
+    }
+  }
+</script>
+</head>
+<body onload="disableSubmit()">
+<h2 id="heading">Welcome to Adi- Online Shopping</h2>
+<form id="shoppingForm" onsubmit="return calculateFinalAmount()">
+  <table id="Ebill">
+    <tbody>
+      <tr>
+        <td>Customer Name</td>
+        <td><input type="text" id="custname" name="custname" placeholder="Enter Customer Name" required pattern="[A-Za-z ]+" autofocus></td>
+      </tr>
+      <tr>
+        <td>Mobile Number</td>
+        <td><input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter Mobile Number" required pattern="[7-9][0-9]{9}"></td>
+      </tr>
+      <tr>
+        <td>Email ID</td>
+        <td><input type="email" id="email" name="email" placeholder="Enter Your Email" required></td>
+      </tr>
+      <tr>
+        <td>Billing Address</td>
+        <td><textarea id="address" name="address" rows="5" cols="20" placeholder="Enter Your Address" required></textarea></td>
+
+      </tr>
+      <tr>
+        <td>Choose Product</td>
+        <td>
+          <select id="product" name="product" required>
+            <option value="">Select Product</option>
+            <option value="TV">TV</option>
+            <option value="Refrigerator">Refrigerator</option>
+            <option value="Mobile">Mobile</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Enter Quantity</td>
+        <td><input type="number" id="quantity" name="quantity" placeholder="Enter Quantity" min="1" required></td>
+      </tr>
+      <tr>
+        <td>Payment Mode</td>
+        <td>
+          <select id="mode" name="mode" required>
+            <option value="">Select Payment Mode</option>
+            <option value="Cash">Cash On Delivery</option>
+            <option value="Debit">Debit Card</option>
+            <option value="UPI">UPI Transfer</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Bag Total</td>
+        <td><input type="number" id="bill" name="bill" readonly required></td>
+      </tr>
+      <tr>
+        <td>Coupon Code</td>
+        <td><input type="text" id="coupon" name="coupon" readonly required></td>
+      </tr>
+      <tr>
+        <td>Delivery Options</td>
+        <td>
+            <input type="radio" id="express" name="delivery" value="Express" required>
+            <label for="express">Express</label><br>
+            <input type="radio" id="standard" name="delivery" value="Standard">
+            <label for="standard">Standard </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="terms" name="terms" onchange="activateButton(this)" required>
+            I Agree to the Terms & Conditions
+        </td> 
+      </tr>
+      <tr>
+        <td><input type="reset" id="clear" value="Clear" onclick="disableSubmit()"></td>
+        <td><input type="submit" id="submit" value="Submit" disabled></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+</body>
+</html>
